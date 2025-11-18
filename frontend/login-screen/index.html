@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login screen</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2>SOIOT SYSTEM</h2>
+        <form id="login-form">
+          <div>
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              id="username-input"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              id="password-input"
+            />
+          </div>
+          <div id="error-message">Invalid username or password</div>
+          <div class="buttons-container">
+            <button id="login-button" type="submit">
+              <p class="button-text">Login</p>
+              <div class="loader"></div>
+            </button>
+            <a href="/">Or create an account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const loginForm = document.getElementById("login-form");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent page reload
+
+        const username = document.getElementById("username-input").value;
+        const password = document.getElementById("password-input").value;
+        const loadingSpinner = document.querySelector(".loader");
+        const buttonText = document.querySelector(".button-text");
+
+        buttonText.style.display = "none";
+        loadingSpinner.style.display = "block";
+
+        setTimeout(() => {
+          const usernameInput = document.getElementById("username-input");
+          const passwordInput = document.getElementById("password-input");
+          const errorMessage = document.getElementById("error-message");
+
+          usernameInput.style.border = "none";
+          passwordInput.style.border = "none";
+          errorMessage.style.display = "none";
+
+          if (username === "john" && password === "1234") {
+            window.location.href = "/dashboard-screen/index.html";
+          } else {
+            usernameInput.style.border = "1px solid red";
+            passwordInput.style.border = "1px solid red";
+            errorMessage.style.display = "block";
+          }
+          buttonText.style.display = "block";
+          loadingSpinner.style.display = "none";
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

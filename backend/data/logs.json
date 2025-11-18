@@ -1,0 +1,188 @@
+[
+  {
+    "deviceId": 101,
+    "name": "TV",
+    "action": "Turn on",
+    "createdDate": "2022-12-13"
+  },
+  {
+    "deviceId": 102,
+    "name": "Washer",
+    "action": "Turn off",
+    "createdDate": "2022-12-14"
+  },
+  {
+    "deviceId": 103,
+    "name": "Refrigerator",
+    "action": "Turn on",
+    "createdDate": "2022-12-15"
+  },
+  {
+    "deviceId": 104,
+    "name": "Ceiling fan",
+    "action": "Turn off",
+    "createdDate": "2022-12-16"
+  },
+  {
+    "deviceId": 105,
+    "name": "Air Conditioner",
+    "action": "Turn on",
+    "createdDate": "2022-12-17"
+  },
+  {
+    "deviceId": 106,
+    "name": "Heater",
+    "action": "Turn off",
+    "createdDate": "2022-12-18"
+  },
+  {
+    "deviceId": 107,
+    "name": "Lamp",
+    "action": "Turn on",
+    "createdDate": "2022-12-19"
+  },
+  {
+    "deviceId": 108,
+    "name": "TV",
+    "action": "Turn off",
+    "createdDate": "2022-12-20"
+  },
+  {
+    "deviceId": 109,
+    "name": "Washer",
+    "action": "Turn on",
+    "createdDate": "2022-12-21"
+  },
+  {
+    "deviceId": 110,
+    "name": "Refrigerator",
+    "action": "Turn off",
+    "createdDate": "2022-12-22"
+  },
+  {
+    "deviceId": 111,
+    "name": "Ceiling fan",
+    "action": "Turn on",
+    "createdDate": "2022-12-23"
+  },
+  {
+    "deviceId": 112,
+    "name": "Air Conditioner",
+    "action": "Turn off",
+    "createdDate": "2022-12-24"
+  },
+  {
+    "deviceId": 113,
+    "name": "Heater",
+    "action": "Turn on",
+    "createdDate": "2022-12-25"
+  },
+  {
+    "deviceId": 114,
+    "name": "Lamp",
+    "action": "Turn off",
+    "createdDate": "2022-12-26"
+  },
+  {
+    "deviceId": 115,
+    "name": "TV",
+    "action": "Turn on",
+    "createdDate": "2022-12-27"
+  },
+  {
+    "deviceId": 116,
+    "name": "Washer",
+    "action": "Turn off",
+    "createdDate": "2022-12-28"
+  },
+  {
+    "deviceId": 117,
+    "name": "Refrigerator",
+    "action": "Turn on",
+    "createdDate": "2022-12-29"
+  },
+  {
+    "deviceId": 118,
+    "name": "Ceiling fan",
+    "action": "Turn off",
+    "createdDate": "2022-12-30"
+  },
+  {
+    "deviceId": 119,
+    "name": "Air Conditioner",
+    "action": "Turn on",
+    "createdDate": "2022-12-31"
+  },
+  {
+    "deviceId": 120,
+    "name": "Heater",
+    "action": "Turn off",
+    "createdDate": "2023-01-01"
+  },
+  {
+    "deviceId": 121,
+    "name": "Lamp",
+    "action": "Turn on",
+    "createdDate": "2023-01-02"
+  },
+  {
+    "deviceId": 122,
+    "name": "TV",
+    "action": "Turn off",
+    "createdDate": "2023-01-03"
+  },
+  {
+    "deviceId": 123,
+    "name": "Washer",
+    "action": "Turn on",
+    "createdDate": "2023-01-04"
+  },
+  {
+    "deviceId": 124,
+    "name": "Refrigerator",
+    "action": "Turn off",
+    "createdDate": "2023-01-05"
+  },
+  {
+    "deviceId": 125,
+    "name": "Ceiling fan",
+    "action": "Turn on",
+    "createdDate": "2023-01-06"
+  },
+  {
+    "deviceId": 126,
+    "name": "Air Conditioner",
+    "action": "Turn off",
+    "createdDate": "2023-01-07"
+  },
+  {
+    "deviceId": 127,
+    "name": "Heater",
+    "action": "Turn on",
+    "createdDate": "2023-01-08"
+  },
+  {
+    "deviceId": 128,
+    "name": "Lamp",
+    "action": "Turn off",
+    "createdDate": "2023-01-09"
+  },
+  {
+    "deviceId": 129,
+    "name": "TV",
+    "action": "Turn on",
+    "createdDate": "2023-01-10"
+  },
+  {
+    "deviceId": 130,
+    "name": "Washer",
+    "action": "Turn off",
+    "createdDate": "2023-01-11"
+  },
+  {
+    "deviceId": 131,
+    "name": "Refrigerator",
+    "action": "Turn on",
+    "createdDate": "2023-01-12"
+  }
+]

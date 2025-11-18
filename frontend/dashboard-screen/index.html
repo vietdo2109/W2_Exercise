@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7720a103a9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Dashboard page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+          "
+        >
+          <i class="fa-solid fa-layer-group"></i>
+          <h4 style="margin: 0; font-size: 14px">Device Manager</h4>
+        </div>
+
+        <a href="/dashboard-screen/index.html">
+          <i class="fa-solid fa-house fa-lg"></i>
+          <p>Dashboard</p>
+        </a>
+
+        <a href="/logs-screen/index.html">
+          <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+          <p>Logs</p></a
+        >
+        <a href="">
+          <i class="fa-solid fa-gear fa-lg"></i>
+          <p>Settings</p>
+        </a>
+      </div>
+
+      <div class="wrapper">
+        <header>
+          <div class="header">
+            <button class="hamburger-button">
+              <i class="fa-solid fa-bars fa-lg"></i>
+            </button>
+
+            <div style="display: flex; align-items: center; gap: 6px">
+              <i class="fa-solid fa-circle-user fa-lg"></i>
+              <p style="font-weight: 600; font-size: 12px">Welcome John</p>
+            </div>
+          </div>
+        </header>
+
+        <div id="dropdownMenu" class="dropdown-menu">
+          <div
+            style="
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 6px;
+              margin-bottom: 10px;
+            "
+          >
+            <i class="fa-solid fa-layer-group fa-lg"></i>
+            <h3 style="margin: 0">Device Manager</h3>
+          </div>
+
+          <a href="/dashboard-screen/index.html">
+            <i class="fa-solid fa-house fa-lg"></i>
+            <p>Dashboard</p>
+          </a>
+
+          <a href="/logs-screen/index.html">
+            <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+            <p>Logs</p></a
+          >
+          <a href="">
+            <i class="fa-solid fa-gear fa-lg"></i>
+            <p>Settings</p>
+          </a>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
+
+        <div class="main-section">
+          <div class="table-container">
+            <table class="table">
+              <tr>
+                <th style="text-align: left">Devices</th>
+                <th style="text-align: right">MAC Address</th>
+                <th style="text-align: right">IP</th>
+                <th style="text-align: right">Created Date</th>
+                <th style="text-align: right">Device Consumption (Kw/H)</th>
+              </tr>
+
+              <tr>
+                <th style="text-align: left; font-weight: 600">Total</th>
+                <th style="text-align: right"></th>
+                <th style="text-align: right"></th>
+                <th style="text-align: right"></th>
+                <th
+                  style="text-align: right; font-weight: 600"
+                  id="totalConsumption"
+                >
+                  -
+                </th>
+              </tr>
+            </table>
+          </div>
+
+          <div class="chart-container">
+            <div class="chart">
+              <h3>Power consumption</h3>
+              <canvas id="myChart"></canvas>
+            </div>
+
+            <div class="add-device-form-container">
+              <h3 style="text-align: center">Add new device</h3>
+              <form id="add-device-form">
+                <div>
+                  <input
+                    type="text"
+                    name="device-name"
+                    placeholder="Device name"
+                    id="device-name-input"
+                  />
+                </div>
+                <div id="error-message">Invalid username or password</div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="device-ip"
+                    placeholder="IP"
+                    id="device-ip-input"
+                  />
+                </div>
+                <div id="error-message">Invalid username or password</div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="device-power"
+                    placeholder="Device power"
+                    id="device-power-input"
+                  />
+                </div>
+                <div id="error-message">Invalid username or password</div>
+
+                <button id="add-device-button" type="submit">
+                  <p class="button-text">ADD DEVICE</p>
+                  <div class="loader"></div>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      // handle hamburger button - mobile menu
+      const hamburButton = document.querySelector(".hamburger-button");
+      const menu = document.querySelector(".dropdown-menu");
+      const overlay = document.getElementById("overlay");
+
+      function toggleMenu() {
+        menu.classList.toggle("active");
+        overlay.classList.toggle("active");
+      }
+
+      hamburButton.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+      // handle hamburger button - mobile menu - END
+
+      const addDeviceForm = document.getElementById("add-device-form");
+      const table = document.querySelector(".table");
+      const tbody = document.querySelector(".table tbody");
+      let totalConsumption = 0;
+      const totalRow =
+        document.getElementById("totalConsumption").parentElement;
+      // For chart
+      const chartLabels = [];
+      const chartConsumptions = [];
+      // ---------------------
+      window.addEventListener("DOMContentLoaded", loadDevices);
+
+      // Chart rendering ends
+      function makeRow(values) {
+        const tr = document.createElement("tr");
+
+        values.forEach((v, i) => {
+          const td = document.createElement("td");
+          td.textContent = v;
+
+          // first column left aligned, rest right aligned
+          td.style.textAlign = i === 0 ? "left" : "right";
+          tr.appendChild(td);
+        });
+
+        return tr;
+      }
+
+      async function fetchDevices() {
+        try {
+          const res = await fetch("/api/devices");
+          const devices = await res.json();
+          return devices;
+        } catch (e) {
+          console.log("error fetching devices", e);
+          return [];
+        }
+      }
+
+      async function loadDevices() {
+        const devices = await fetchDevices();
+
+        devices.forEach((device) => {
+          totalConsumption += device.consumption;
+
+          chartLabels.push(device.name);
+          chartConsumptions.push(device.consumption);
+
+          const values = [
+            device.name,
+            device.MACAddress,
+            device.IP,
+            device.createdDate,
+            device.consumption,
+          ];
+
+          tbody.insertBefore(makeRow(values), totalRow);
+        });
+
+        document.getElementById("totalConsumption").textContent =
+          totalConsumption;
+
+        // Chart rendering
+        const ctx = document.getElementById("myChart");
+
+        new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: chartLabels,
+            datasets: [
+              {
+                label: "Device Consumption (Kw/H)",
+                data: chartConsumptions,
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {},
+        });
+      }
+    </script>
+  </body>
+</html>

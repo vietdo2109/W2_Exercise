@@ -1,0 +1,30 @@
+[
+  {
+    "name": "TV",
+    "MACAddress": "00:1B:11:3A:B7",
+    "IP": "127.0.0.2",
+    "createdDate": "2022-12-13",
+    "consumption": 50
+  },
+  {
+    "name": "Washer",
+    "MACAddress": "00:1B:11:3A:B7",
+    "IP": "127.0.0.2",
+    "createdDate": "2022-12-13",
+    "consumption": 60
+  },
+  {
+    "name": "Refrigerator",
+    "MACAddress": "00:1B:11:3A:B7",
+    "IP": "127.0.0.2",
+    "createdDate": "2022-12-13",
+    "consumption": 80
+  },
+  {
+    "name": "Ceiling fan",
+    "MACAddress": "00:1B:11:3A:B7",
+    "IP": "127.0.0.2",
+    "createdDate": "2022-12-13",
+    "consumption": 100
+  }
+]
