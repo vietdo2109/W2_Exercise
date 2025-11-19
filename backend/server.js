@@ -19,22 +19,31 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.get("/api/logs", (req, res) => {
   const page = parseInt(req.query.page) || 1;
+  const search = req.query.search || "";
+
   const limit = 10;
 
   const start = (page - 1) * limit;
   const end = start + limit;
 
   const logs = readLogs();
-  const paginated = logs.slice(start, end);
+
+  const findBySearchLogs = logs.filter((log) =>
+    log.name.trim().toLowerCase().includes(search.trim().toLowerCase())
+  );
+
+  const paginated = findBySearchLogs.slice(start, end);
+
   console.log({
     logs: paginated,
     currentPage: page,
-    totalpage: Math.ceil(logs.length / 10),
+    totalpage: Math.ceil(findBySearchLogs.length / 10),
   });
+
   res.json({
     logs: paginated,
     currentPage: page,
-    totalPage: Math.ceil(logs.length / 10),
+    totalPage: Math.ceil(findBySearchLogs.length / 10),
   });
 });
 
