@@ -111,36 +111,18 @@
           </div>
           <div class="table-container">
             <table class="table">
-              <tr>
-                <th style="text-align: left">Device ID</th>
-                <th style="text-align: right">Name</th>
-                <th style="text-align: right">Action</th>
-                <th style="text-align: right">Date</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th style="text-align: left">Device ID</th>
+                  <th style="text-align: right">Name</th>
+                  <th style="text-align: right">Action</th>
+                  <th style="text-align: right">Date</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
             </table>
           </div>
-          <div class="pagination-container">
-            <!-- <a href="">
-                <div class="pagination-button">
-                  <p class="pagination-button-text">1</p>
-                </div>
-              </a>
-              <a href="">
-                <div class="pagination-button">
-                  <p class="pagination-button-text">2</p>
-                </div>
-              </a>
-              <a href="">
-                <div class="pagination-button">
-                  <p class="pagination-button-text">3</p>
-                </div>
-              </a>
-              <a href="">
-                <div class="pagination-button">
-                  <p class="pagination-button-text">4</p>
-                </div>
-              </a> -->
-          </div>
+          <div class="pagination-container"></div>
         </div>
       </div>
     </div>
@@ -166,8 +148,16 @@
       const table = document.querySelector(".table");
       const tbody = document.querySelector(".table tbody");
 
+      // get the current page from url
       const params = new URLSearchParams(window.location.search);
       const page = parseInt(params.get("page")) || 1;
+
+      // search
+      const searchInput = document.getElementById("search-input");
+      const searchButton = document.getElementById("search-button");
+      searchButton.addEventListener("click", () => {
+        searchLogs(searchInput.value);
+      });
 
       window.addEventListener("DOMContentLoaded", () => loadLogs(page));
 
@@ -184,6 +174,32 @@
         });
 
         return tr;
+      }
+
+      async function searchLogs(search) {
+        try {
+          const res = await fetch(`/api/logs?search=${search}`);
+          const data = await res.json();
+
+          // clear the table data
+          tbody.innerHTML = "";
+
+          // render new table data (search result)
+          data.logs.forEach((log) => {
+            const values = [
+              log.deviceId,
+              log.name,
+              log.action,
+              log.createdDate,
+            ];
+            tbody.appendChild(makeRow(values));
+          });
+
+          // render pagination
+          renderPagination(data.totalPage, data.currentPage);
+        } catch (e) {
+          console.log("error fetching logs", e);
+        }
       }
 
       async function fetchLogs(page = 1) {
