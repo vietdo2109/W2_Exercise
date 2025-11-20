@@ -10,6 +10,9 @@ import {
 } from "../backend/database.js";
 const app = express();
 
+// REQUIRED to read req.body (JSON)
+app.use(express.json());
+
 // setup dirname boilerplate
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,12 +37,6 @@ app.get("/api/logs", (req, res) => {
 
   const paginated = findBySearchLogs.slice(start, end);
 
-  console.log({
-    logs: paginated,
-    currentPage: page,
-    totalpage: Math.ceil(findBySearchLogs.length / 10),
-  });
-
   res.json({
     logs: paginated,
     currentPage: page,
@@ -60,9 +57,10 @@ app.get("/api/devices", (req, res) => {
 });
 
 app.post("/api/devices", (req, res) => {
-  const devices = writeDevices();
+  const devices = readDevices();
   devices.push(req.body);
-  writeLogs(devices);
+  writeDevices(devices);
+
   res.json({ success: true });
 });
 

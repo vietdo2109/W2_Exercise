@@ -26,5 +26,19 @@
     "IP": "127.0.0.2",
     "createdDate": "2022-12-13",
     "consumption": 100
+  },
+  {
+    "name": "NEW TV",
+    "IP": "127.0.0.2\t",
+    "consumption": 300,
+    "createdDate": "2025-11-20",
+    "MACAddress": "74:E5:68:96:70"
+  },
+  {
+    "name": "NEW TV 6",
+    "IP": "127.0.0.2\t",
+    "consumption": 10,
+    "createdDate": "2025-11-20",
+    "MACAddress": "B1:CA:85:B2:73"
   }
 ]
