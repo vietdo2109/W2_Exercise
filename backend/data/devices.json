@@ -40,5 +40,19 @@
     "consumption": 10,
     "createdDate": "2025-11-20",
     "MACAddress": "B1:CA:85:B2:73"
+  },
+  {
+    "name": "NEW tv 3",
+    "IP": "127.0.0.2\t",
+    "consumption": 300,
+    "createdDate": "2025-11-21",
+    "MACAddress": "07:CC:2C:DC:DD"
+  },
+  {
+    "name": "add device",
+    "IP": "127.0.0.2\t",
+    "consumption": 10,
+    "createdDate": "2025-11-21",
+    "MACAddress": "FF:5D:D2:A9:44"
   }
 ]
