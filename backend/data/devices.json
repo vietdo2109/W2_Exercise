@@ -54,5 +54,12 @@
     "consumption": 10,
     "createdDate": "2025-11-21",
     "MACAddress": "FF:5D:D2:A9:44"
+  },
+  {
+    "name": "add device",
+    "IP": "127.0.0.2\t",
+    "consumption": 100,
+    "createdDate": "2025-11-21",
+    "MACAddress": "B2:E1:BC:A7:C5"
   }
 ]
