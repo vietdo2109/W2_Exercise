@@ -127,7 +127,6 @@ addDeviceForm.addEventListener("submit", function (e) {
   }
 });
 
-// Chart rendering ends
 function makeRow(values) {
   const tr = document.createElement("tr");
 
@@ -194,6 +193,7 @@ async function loadDevices() {
     options: {},
   });
 }
+
 function generateRandomMAC() {
   return "XX:XX:XX:XX:XX".replace(/X/g, () =>
     Math.floor(Math.random() * 16)
